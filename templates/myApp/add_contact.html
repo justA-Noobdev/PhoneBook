@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Contact
+{% endblock title %}
+
+<!-- Form to add a new contact in contact book -->
+
+{% block content %}
+    {% is user.is_superuser %}     <!-- Only superuser/admin can add new contact -->
+        <br><br><br>
+        <h3>Add Contact</h3><br>
+        <form class=".input-field" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn indigo">Add</button>
+        </form>
+    {% else %}
+        <h4>You are not authorized to add a User.</h4>
+    {% endif %}
+{% endblock content %}

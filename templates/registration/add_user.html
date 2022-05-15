@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Add User {% endblock title %}
+
+<!-- User Creation Form -->
+
+{% block content %}
+
+    <div class="container">
+        <br><br><br>
+        {% if user.is_superuser %}                                                     <!-- To make sure only admin/superuser can add a user -->
+            <h3>Add A New User</h3><br>
+            <form class=".input-field" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn indigo">Add User</button>
+            </form>
+        {% else %}
+            <h4 class="center">You are not authorized to add a user on this website.</h4>
+        {% endif %}
+    </div>
+
+{% endblock %}

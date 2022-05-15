@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   <!-- Include Materialize CSS -->
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+      <div class="nav-wrapper blue">
+        <a href="{% url 'home' %}" class="brand-logo">PHONEBOOK</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% if user.is_superuser %}                                            <!-- Only display when the user is admin/superuser -->
+            <li><a href="{% url 'add_user' %}">Add User</a></li>
+            <li><a href="{% url 'add_contact' %}">Add Contact</a></li>
+          {% endif %}
+          {% if user.is_authenticated %}                                        <!-- Only display when a user is logged in witha valid account -->
+            <li><a href="{% url 'contacts' %}">Contacts</a></li>
+            <li><a class="btn red" href="{% url 'logout' %}">Logout</a></li>
+          {% else %}                                                            <!-- Login only displayed when user not logged in -->
+              <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Part of the program -->
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>

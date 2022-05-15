@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Contact Detail
+{% endblock title %}
+
+{% block content %}
+    <h2 class="title"><b>{{ contact.name }}</b></h2>
+    <p>
+        <br>
+        Phone Number: {{ contact.phone_number }}<br>
+        Address: {{ contact.address }} <br>
+        Email: {{ contact.email }} <br>
+        Phone Number: {{ contact.phone_number }} <br>
+        Contact: {{ contact.contract }} <br>
+        Date Added: {{ contact.date_added }} <br> <hr> <br>
+        <br>
+        <a class="btn red" href="{% url 'delete_contact' contact.pk %}">Delete</a>
+        <a class="btn blue" href="{% url 'update_contact' contact.pk %}">Update</a>
+    </p><br><br>
+{% endblock content %}

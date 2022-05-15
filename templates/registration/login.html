@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    login
+{% endblock title %}
+
+<!-- Create a User Login Form -->
+
+{% block content %}
+    <div class="container">
+        <div class="container">
+            <br><br><br>
+            <h3>Login</h3><br>
+            <form class=".input-field" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn indigo">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

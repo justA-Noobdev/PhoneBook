@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Contact {% endblock %}
+
+{% block content %}
+
+    <br><br><br>
+    {% if user.is_superuser %}          <!-- Only superuser/admin can edit a contact -->
+        <br><br><br>
+        <h3>Update Contact</h3><br>
+        <form class=".input-field" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn indigo">Update</button>
+        </form>
+    {% else %}
+    <h4 class="center">You are not authorized to Update a contact on this website.</h4>
+    {% endif %}
+
+{% endblock content %}
