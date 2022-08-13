@@ -5,7 +5,7 @@ This is a simple website to create and store Contact of companies. This website 
 ## Getting Started
 First clone the repository
 
-```console
+```bash
 $ git clone https://github.com/justA-Noobdev/PhoneBook.git
 $ cd Phonebook
 
